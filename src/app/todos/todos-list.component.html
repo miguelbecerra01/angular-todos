@@ -1,9 +1,15 @@
-<b *ngIf="!haveTodosNotDone">Great you don't have any Todo</b>
-<ul *ngIf="haveTodosNotDone">
-    <li *ngFor="let todo of todos" (click)="onCompleteTodo(todo)">{{todo.name}}</li>
-</ul>
+<div>
+    <b *ngIf="todosNotDone.length===0">Great you don't have any Todo</b>
+    <ul *ngIf="todosNotDone.length>0">
+        <li *ngFor="let todo of todosNotDone" (click)="onCompleteTodo(todo)">{{todo.name}}</li>
+    </ul>
+</div>
 
-<p>Here you have all what you have done, good job!</p>
-<ul>
-    <li *ngFor="let todoDone of todosDone" class="todos-list-done" (click)="onDeleteTodo(todoDone)">{{todoDone.name}} - {{todoDone.done}}</li>
-</ul>
+<div *ngIf="todosDone.length>0">
+    <p>Here you have all what you have done, good job!</p>
+    <ul>
+        <li *ngFor="let todoDone of todosDone" class="todos-list-done" (click)="onDeleteTodo(todoDone)">{{todoDone.name}} - {{todoDone.done}}</li>
+    </ul>
+
+</div>
+<br>

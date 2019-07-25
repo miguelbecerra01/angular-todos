@@ -10,9 +10,9 @@ import { Subscription } from 'rxjs/Subscription';
     styleUrls: ['./todos-list.component.scss']
 })
 export class TodosListComponent implements OnInit {
-    todos: Todo[];
+    todosNotDone: Todo[];
     todosDone: Todo[];
-    haveTodosNotDone: boolean = false;
+    areAllTodosDone: boolean = false;
 
     private subscription: Subscription;
 
@@ -20,17 +20,13 @@ export class TodosListComponent implements OnInit {
 
     ngOnInit() {
         console.log('init');
-        this.todos = this.todoService.getAllTodosNotDone();
+        this.todosNotDone = this.todoService.getAllTodosNotDone();
         this.todosDone = this.todoService.getAllTodosDone();
-
-        this.haveTodosNotDone = this.todos.length > 0;
 
         this.subscription = this.todoService.todosChanged.subscribe(() => {
 
-            this.todos = this.todoService.getAllTodosNotDone();
+            this.todosNotDone = this.todoService.getAllTodosNotDone();
             this.todosDone = this.todoService.getAllTodosDone();
-
-            this.haveTodosNotDone = this.todos.length > 0;
 
         });
     }
