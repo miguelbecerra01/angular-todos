@@ -1,0 +1,15 @@
+li {
+  cursor: pointer;
+}
+
+li:hover {
+  text-decoration: underline;
+  background-color: #fff000;
+}
+
+li.todos-list-done {
+  text-decoration: line-through;
+}
+li.todos-list-done:hover {
+  background-color: red;
+}
